@@ -1,0 +1,51 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "jabba-based-scripting-lanugage-jbs",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+				  "name": "keyword.control.jbs",
+				  "match": "\\b(if|while|for|return)\\b"
+			    },
+				{
+					"name": "key.newuser",
+					"match": "\bnewuser\b"
+				}
+		]
+		},
+		"strings": {
+			"name": "string.quoted.double.jbs",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.jbs",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"tokenColors": [
+	  {
+		"scope": "key.newuser",
+		"settings": {
+		  "foreground": "#0000ff",
+		  "fontStyle": "italic"
+		}
+	  }
+	],
+	"semanticHighlighting": true,
+	"semanticTokenColors": {
+	  "key.newuser": "#0000ff"
+	},
+	"scopeName": "source.jbs"
+}

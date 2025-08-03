@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jabba Saulute Generator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="black">
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css"> 
+	<script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sizzle/2.3.5/sizzle.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sizzle/2.3.5/sizzle.min.js"></script> 
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="http://benahm.github.io/jquery.throwable/javascripts/libs/jquery-1.9.0/jquery.min.js" type="text/javascript"></script> 
+    <script src="http://benahm.github.io/jquery.throwable/javascripts/jquery.throwable.js" type="text/javascript"></script>
+	<script src="filesaver.js"></script>
+	<meta data-react-helmet="true" charset="utf-8">
+	<meta data-react-helmet="true" property="og:title" content="Jabba Saulute Generator">
+	<meta data-react-helmet="true" property="og:description" content="Jabba Saulute Generator is a generator where you can anonymize, speak bad English, and think people if you are not speaking English correctly.">
+	<meta data-react-helmet="true" name="description" content="Jabba Saulute Generator is a generator where you can anonymize, speak bad English, and think people if you are not speaking English correctly.">
+</head>
+<style>
+
+body { background: silver; font-family: Tahoma, Helvetica, Roboto, sans-serif; text-align: center; }
+
+textarea { font-family: Tahoma, Helvetica, Roboto, sans-serif; background: white; outline: none; resize: none; color: black; box-shadow: 2px 2px 15px red, -2px 2px 15px lime, 2px -2px 15px yellow, -2px -2px 15px cyan;}
+textarea:hover { background: white; outline: none; resize: none; color: blue; }
+textarea:active { background: white; outline: none; resize: none; color: blue; }
+
+button { font-family: Tahoma, Helvetica, Roboto, sans-serif; padding: 10px 10px; border: 1px inset green; background: yellowgreen; color: white; box-shadow: 0px 2px 4px turquoise, 0px 4px 4px blue; outline: none;}
+button:active { padding: 10px 10px; border: 1px inset red; background: orangered; color: beige; box-shadow: 0px 2px 4px firebrick; outline: none;}
+button:hover { padding: 10px 10px; border: 1px inset beige; background: yellow; color: black; box-shadow: 0px 2px 4px greenyellow; outline: none;}
+</style>
+<body>
+<h1 style="text-shadow: 4px 4px 2px grey;">Jabba Saulute Generator</h1>
+<img src="template_grey.png" width="200" height="100">
+<br>
+<br>
+<p>Select the generation model.</p>
+<br>
+<select id="jabbaInput">
+<option id="jabbaMethod1" value="selJM" selected>Jabba Model (3,044 words)</option>
+<option id="jabbaMethod2" value="selSM">Standard Model (10,000 words)</option>
+<option id="jabbaMethod3" value="selFruit">Fruit Model (31 words)</option>
+<option id="jabbaMethod4" value="selCode">Code Model (4,613 words)</option>
+<option id="jabbaMethod5" value="selPowerful">PowerShell Model (38,618 words)</option>
+<option id="jabbaMethod6" value="selFuf">FFUF Model (4,686 words)</option>
+<option id="jabbaMethod7" value="selDeEdu">Deutsch Education Model (4,783 words)</option>
+<option id="jabbaMethod8" value="selXfst">XFST Model (25,143 words)</option>
+<option id="jabbaMethod9" value="selDiderot">Diderot Model (3,000 words)</option>
+<option id="jabbaMethod10" value="selKnuth">Knuth Model (5,757 words)</option>
+<option id="jabbaMethod11" value="selRandomLis">Random Lists Model (2,466 words)</option>
+<option id="jabbaMethod12" value="selRandLet">Short Letter Model (54,445 words)</option>
+<option id="jabbaMethod13" value="selBin">Binary Model (256 words)</option>
+<option id="jabbaMethod14" value="selHex">Hexadecimal Model (256 words)</option>
+<option id="jabbaMethod15" value="selSwear">Racist Model (1,395 words)</option>
+<option id="jabbaMethod16" value="selBurmese">Burmese Model (41,344 words)</option>
+<option id="jabbaMethod17" value="selJMC">Chinese Model (406,591 words)</option>
+</select>
+<br>
+<p>Enter the amount.</p>
+<br>
+<input type="text" placeholder="Amount (recommended 100)" value="100" id="jabbaWordAmount">
+<br>
+<p>Enter the maximum word.</p>
+<br>
+<input type="text" placeholder="Min to Max" value="3044" id="jabbaWordMax">
+	<br><br>
+	<button onclick="document.getElementById('jabbaWordMax').value = Math.floor(Math.random()*10000)">Randomize</button>
+<br><br>
+<button onclick="generate()">Generate</button>
+<br><br><br>
+	<textarea id="g" rows="20" cols="100" placeholder="This will appear right here." spellcheck="false"></textarea>
+	<br><br><br>
+	<button onclick="downloadhex()">Download .txt</button>
+	<p>Jabba Saulute Generator is a generator where you can anonymize, speak bad English, and think people if you are not speaking English correctly. Just type the amount, and you copy the text, then paste it somewhere else like Discord or Reddit. Select a text generation model from the menu, and click "Generate", and also you can save as text if you need to.</p>
+	<p><b>IN SOME CASES FOR YOUTUBE, IT WILL BE DELETED IMMEDIATELY BY AUTOMATED BOT. </b> YouTube self-botting will sometimes cause channel termination.</p>
+	<p><b>ONLY CHATTING CLYDE PLATFORM </b> Discord is perfectly allowed to post and send mixed terrible sentences, but however, you can get banned for offensive, or bad English property.</p>
+<script src="jabbaModels.js"></script>
+<script>
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selJM") {
+    document.getElementById('jabbaWordMax').value = 3044;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selSM") {
+    document.getElementById('jabbaWordMax').value = 10000;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selFruit") {
+    document.getElementById('jabbaWordMax').value = 31;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selCode") {
+    document.getElementById('jabbaWordMax').value = 4613;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selPowerful") {
+    document.getElementById('jabbaWordMax').value = 38618;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selFuf") {
+    document.getElementById('jabbaWordMax').value = 4686;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selDeEdu") {
+    document.getElementById('jabbaWordMax').value = 4783;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selXfst") {
+    document.getElementById('jabbaWordMax').value = 25143;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selDiderot") {
+    document.getElementById('jabbaWordMax').value = 3000;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selKnuth") {
+    document.getElementById('jabbaWordMax').value = 5757;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selRandomLis") {
+    document.getElementById('jabbaWordMax').value = 2466;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selRandLet") {
+    document.getElementById('jabbaWordMax').value = 54445;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selBin") {
+    document.getElementById('jabbaWordMax').value = 256;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selHex") {
+    document.getElementById('jabbaWordMax').value = 256;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selSwear") {
+    document.getElementById('jabbaWordMax').value = 1395;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selBurmese") {
+    document.getElementById('jabbaWordMax').value = 41344;
+  }
+});
+document.getElementById('jabbaInput').addEventListener('change', function (e) {
+  if (e.target.value === "selJMC") {
+    document.getElementById('jabbaWordMax').value = 406591;
+  }
+});
+	function downloadhex(){saveTextAs(document.getElementById('g').value, "JabbaGen_" + Math.floor(Math.random()*99999999) + ".txt")}
+	setInterval(function(){document.title="Jabba Saulute Generator"}, 1);
+</script>
+</body>
+</html>

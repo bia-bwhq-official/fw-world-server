@@ -1,0 +1,151 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+@font-face {
+  font-family: aerotype;
+  src: url(SegoeUI.woff);
+}
+body {
+   background: rgb(89,50,108);
+   background: linear-gradient(0deg, rgba(89,50,108,1) 0%, rgba(182,104,212,1) 56%, rgba(195,129,226,1) 74%, rgba(245,224,255,1) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: aerotype;
+    color: white;
+  }
+  input {
+      display: block;
+      width: 400px;
+  }
+  input,
+  input::placeholder {
+      font: 20px sans-serif;
+  }
+
+  #usersOnline {
+    background: rgb(132,65,158);
+    background: linear-gradient(0deg, rgba(132,65,158,1) 0%, rgba(89,50,108,1) 44%, rgba(107,55,131,1) 44%, rgba(225,199,237,1) 100%);
+    margin:0;
+  }
+
+  #menu {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #5f2c77;
+    background: rgb(182,104,212);
+    background: linear-gradient(0deg, rgba(182,104,212,1) 0%, rgba(89,50,108,1) 44%, rgba(138,84,163,1) 45%, rgba(245,224,255,1) 100%);
+    filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.5));
+    width: 100%;
+    height: 150px;
+  }
+#logo_label {
+  width: 100px;
+  height: 100px;
+  background-image: url(/src/aerochat.png);
+  background-size: 100px;
+}
+#chat {
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  border-radius: 20px;
+  overflow: scroll;
+  width: 100%;
+  height: 500px;
+}
+#myUser {
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  border-radius: 20px;
+  background-color: #916bb8;
+  max-width: 500px;
+  max-height: 500px;
+  word-wrap: break-word;
+  display: none;
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.5));
+}
+
+#user_cont {
+  display: flex;
+}
+#avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center; 
+  width: 120px;
+  height: 120px;
+  background-image: url(/src/av_border_plain.png);
+  background-size: cover;
+}
+#msg {
+  background: rgb(132,65,158);
+  background: linear-gradient(0deg, rgba(132,65,158,1) 0%, rgba(89,50,108,1) 44%, rgba(107,55,131,1) 44%, rgba(225,199,237,1) 100%);
+  border-color: #969696;
+  border-width: 1px;
+  border-radius: 20px;
+  color: #878787;
+  border-style: solid;
+  width: 400px;
+  min-height: 100px;
+  word-wrap: break-word;
+  font-weight: 100;
+}
+#pfp {
+  width: 80px;
+  height: 80px;
+}
+
+p{margin:0;}
+
+#msgSend {
+  display: flex;
+  background: rgb(132,65,158);
+  background: linear-gradient(0deg, rgba(132,65,158,1) 0%, rgba(89,50,108,1) 44%, rgba(107,55,131,1) 44%, rgba(225,199,237,1) 100%);
+}
+#send {
+  background-image: url(/src/send.png);
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  filter: hue-rotate(80deg)
+}
+
+.myUser {
+  position: absolute;
+  left: 90%;
+  display: inline;
+}
+.logo {
+  z-index: 9;
+}
+
+.segoe {
+  font-family: aerotype;
+}
+.userAt{
+  color: black;
+  font-size: 20px;
+}
+.dialogue_medium {
+  font-size: 20px;
+}
+.dialogue_large {
+  font-size: 30px;
+}
+button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #6477a6;
+  border-radius: 20px;
+  background: rgb(132,65,158);
+  background: linear-gradient(0deg, rgba(132,65,158,1) 0%, rgba(89,50,108,1) 44%, rgba(107,55,131,1) 44%, rgba(225,199,237,1) 100%);
+}

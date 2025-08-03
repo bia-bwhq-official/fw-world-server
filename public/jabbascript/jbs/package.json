@@ -1,0 +1,42 @@
+{
+  "name": "jbs",
+  "displayName": "jbs",
+  "description": "Jabba Based Scripting Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "editor.semanticHighlighting.enabled": true,
+  "contributes": {
+    "semanticTokenTypes": [
+            {
+                "id": "newuser",
+                "superType": "newuser",
+                "description": "newuser"
+            }
+        ],
+        "configurationDefaults": {
+            "editor.semanticTokenColorCustomizations": {
+                "rules": {
+                    "comment": "#ffca84",
+                    "string": "#B5BD68",
+                    "newuser": "#689cfc"
+                }
+            }
+     },
+    "languages": [{
+      "id": "jbs",
+      "aliases": ["jabba-based-scripting-lanugage-jbs", "jbs"],
+      "extensions": [".jbs"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "jbs",
+      "scopeName": "source.jbs",
+      "path": "./syntaxes/jbs.tmLanguage.json"
+    }]
+  }
+}

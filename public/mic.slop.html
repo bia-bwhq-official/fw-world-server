@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-to-Text Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        #startBtn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+        
+        #stopBtn {
+            background: linear-gradient(45deg, #f44336, #da190b);
+            color: white;
+        }
+        
+        #clearBtn {
+            background: linear-gradient(45deg, #2196F3, #0b7dda);
+            color: white;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .listening {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+        
+        .stopped {
+            background: #ffebee;
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+        
+        .ready {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 2px solid #2196f3;
+        }
+        
+        .settings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        select, input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        #transcript {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: vertical;
+            background: #fafafa;
+        }
+        
+        .interim {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #f44336;
+        }
+        
+        .feature-list {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .feature-list h3 {
+            margin-top: 0;
+            color: #1565c0;
+        }
+        
+        .feature-list ul {
+            margin: 10px 0;
+        }
+        
+        .browser-support {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 Voice-to-Text Demo</h1>
+        
+        <div class="settings">
+            <div class="setting-group">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="en-US">English (US)</option>
+                    <option value="en-GB">English (UK)</option>
+                    <option value="es-ES">Spanish</option>
+                    <option value="fr-FR">French</option>
+                    <option value="de-DE">German</option>
+                    <option value="it-IT">Italian</option>
+                    <option value="pt-BR">Portuguese (Brazil)</option>
+                    <option value="ru-RU">Russian</option>
+                    <option value="ja-JP">Japanese</option>
+                    <option value="ko-KR">Korean</option>
+                    <option value="zh-CN">Chinese (Simplified)</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <label for="continuous">Continuous:</label>
+                <select id="continuous">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <label for="interimResults">Interim Results:</label>
+                <select id="interimResults">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <label for="maxAlternatives">Max Alternatives:</label>
+                <input type="number" id="maxAlternatives" min="1" max="10" value="1">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn">🎤 Start Recording</button>
+            <button id="stopBtn" disabled>⏹️ Stop</button>
+            <button id="clearBtn">🗑️ Clear</button>
+        </div>
+        
+        <div id="status" class="status ready">Ready to start</div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <textarea id="transcript" placeholder="Your speech will appear here..."></textarea>
+        
+        <div class="feature-list">
+            <h3>Web Speech API Features:</h3>
+            <ul>
+                <li><strong>Continuous Recognition:</strong> Keep listening until manually stopped</li>
+                <li><strong>Interim Results:</strong> Show partial results while speaking</li>
+                <li><strong>Multiple Languages:</strong> Support for many languages</li>
+                <li><strong>Confidence Scores:</strong> Get confidence ratings for results</li>
+                <li><strong>Alternative Results:</strong> Multiple interpretation options</li>
+            </ul>
+            
+            <div class="browser-support">
+                <strong>Browser Support:</strong> Chrome, Edge, Safari (iOS 14.5+), Firefox (limited)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check for browser support
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        if (!SpeechRecognition) {
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = 'Speech Recognition is not supported in this browser. Try Chrome, Edge, or Safari.';
+            document.getElementById('startBtn').disabled = true;
+        }
+        
+        let recognition = null;
+        let isListening = false;
+        
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const status = document.getElementById('status');
+        const transcript = document.getElementById('transcript');
+        const errorDiv = document.getElementById('error');
+        
+        // Settings
+        const languageSelect = document.getElementById('language');
+        const continuousSelect = document.getElementById('continuous');
+        const interimResultsSelect = document.getElementById('interimResults');
+        const maxAlternativesInput = document.getElementById('maxAlternatives');
+        
+        function initializeRecognition() {
+            if (!SpeechRecognition) return;
+            
+            recognition = new SpeechRecognition();
+            
+            // Apply settings
+            recognition.lang = languageSelect.value;
+            recognition.continuous = continuousSelect.value === 'true';
+            recognition.interimResults = interimResultsSelect.value === 'true';
+            recognition.maxAlternatives = parseInt(maxAlternativesInput.value);
+            
+            // Event handlers
+            recognition.onstart = () => {
+                isListening = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                status.textContent = '🎤 Listening...';
+                status.className = 'status listening';
+                errorDiv.style.display = 'none';
+            };
+            
+            recognition.onresult = (event) => {
+                let finalTranscript = '';
+                let interimTranscript = '';
+                
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const result = event.results[i];
+                    
+                    if (result.isFinal) {
+                        finalTranscript += result[0].transcript;
+                        
+                        // Show alternatives if available
+                        if (result.length > 1) {
+                            console.log('Alternatives:', Array.from(result).map(alt => ({
+                                transcript: alt.transcript,
+                                confidence: alt.confidence
+                            })));
+                        }
+                    } else {
+                        interimTranscript += result[0].transcript;
+                    }
+                }
+                
+                // Update transcript
+                const currentText = transcript.value;
+                if (finalTranscript) {
+                    transcript.value = currentText + finalTranscript;
+                }
+                
+                // Show interim results
+                if (interimTranscript && interimResultsSelect.value === 'true') {
+                    const interimDisplay = document.createElement('div');
+                    interimDisplay.className = 'interim';
+                    interimDisplay.textContent = interimTranscript;
+                    
+                    // Remove previous interim display
+                    const existingInterim = document.querySelector('.interim');
+                    if (existingInterim) existingInterim.remove();
+                    
+                    transcript.parentNode.insertBefore(interimDisplay, transcript.nextSibling);
+                }
+            };
+            
+            recognition.onerror = (event) => {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = `Error: ${event.error}`;
+                
+                if (event.error === 'no-speech') {
+                    errorDiv.textContent = 'No speech was detected. Try again.';
+                } else if (event.error === 'not-allowed') {
+                    errorDiv.textContent = 'Microphone access denied. Please allow microphone access.';
+                }
+                
+                stopRecognition();
+            };
+            
+            recognition.onend = () => {
+                stopRecognition();
+            };
+        }
+        
+        function startRecognition() {
+            if (!recognition) initializeRecognition();
+            
+            try {
+                recognition.start();
+            } catch (error) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'Error starting recognition: ' + error.message;
+            }
+        }
+        
+        function stopRecognition() {
+            if (recognition && isListening) {
+                recognition.stop();
+            }
+            
+            isListening = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            status.textContent = 'Ready to start';
+            status.className = 'status ready';
+            
+            // Remove interim display
+            const existingInterim = document.querySelector('.interim');
+            if (existingInterim) existingInterim.remove();
+        }
+        
+        // Event listeners
+        startBtn.addEventListener('click', startRecognition);
+        stopBtn.addEventListener('click', stopRecognition);
+        clearBtn.addEventListener('click', () => {
+            transcript.value = '';
+            const existingInterim = document.querySelector('.interim');
+            if (existingInterim) existingInterim.remove();
+        });
+        
+        // Update recognition when settings change
+        [languageSelect, continuousSelect, interimResultsSelect, maxAlternativesInput].forEach(element => {
+            element.addEventListener('change', () => {
+                if (isListening) {
+                    stopRecognition();
+                }
+                recognition = null; // Force re-initialization
+            });
+        });
+        
+        // Initialize on page load
+        initializeRecognition();
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+newuser arte is having equivalents to user behaviors 
+   1,1,1,1,1,
+   1,0,0,0,1,
+   1,0,0,0,1,
+   1,0,0,0,1,
+   1,1,1,1,1,
+user behavior are terminate-
+
+era createstuff[newart]<
+  newuser width is having equivalents to 5-
+  newuser height is having equivalents to 5-
+  
+  for[i is having equivalents to 0- i less than newart.length- i+=width]<
+      confront user[newartuser behaviorsiuser behavior are terminate]-
+  >
+>
+
+createstuff[arte]-

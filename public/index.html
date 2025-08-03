@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuckworld</title>
+    <link rel="stylesheet" href="fuckworld.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script defer src="/lib/speakClient.js"></script>
+</head>
+<body>
+    <p class="paragraph_box">
+        <b>⚠️ THIS PAGE HAS BEEN CLAIMED BY BIA ⚠️</b><br><br>
+        <span>NOTE THAT THE BIA AND BWHQ DOES NOT SUPPORT JABBA OR HIS SATANIC CULTS. THIS WEBSITE IS SIMPLY AN ARCHIVE NOW FOR ALL JABBA RELATED THINGS LOL</span>
+    </p>
+    <div class="header">
+        <img src="/img/logo.png" width="200" height="200">
+        <hr>
+        <div style="display:flex;gap:5px;">
+            <button class="button_select" onclick="location.href='/videos.html'">Videos</button>
+            <button class="button_select" onclick="location.href='/jabbascript/index.html'">Jabbascript Hypercompiler</button>
+            <button class="button_select" onclick="location.href='/pmdm/index.html'">PMDM Plus</button>
+            <button class="button_select"onclick="location.href='/games.html'">Games</button>
+        </div>
+        <hr>
+    </div>
+    <marquee direction="right" style="position:relative;top:0px;left:0px;width:400px;" scrollamount="20"><img style="animation: jabbspin 2s linear infinite" width="200" height="80" src="/img/avatar/onute3.png"></marquee>
+    <br>
+    <h1>This site has been updated! New CSS, games, videos, and chat features.</h1>
+    <p class="paragraph_box">
+    See official HyperWORLD Page HERE!
+    <button class="button_select" onclick="window.open('https://onutemaster777.github.io/');">HyperWORLD Official</button>
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+    <br>
+    See BonziWORLD Fun Club HERE!
+    <button class="button_select" onclick="window.open('https://bonziworld.org');">BonziWORLD.org</button>
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+    </p>
+    <br>
+    <hr>
+    <img src="/img/jabbgod.png">
+    <p class="paragraph_box">A photo of Jabba, a god</p>
+    <hr>
+    <iframe style="width:95%;height:500px;" src="https://wiki.bonziworld.org/Jabba">Iframe failed to be good user.</iframe>
+    <br>
+    <p class="paragraph_box">
+        FuckWORLD: IUS, Onute, and Jabba community for all.
+        <br>
+        <br>
+        Archive of the Jabba media made of all on 2021-2024! See some all of it for viewing yourself.
+        The best available site to route all users ever in existence for games, chat, script, plus then more.
+        <br>
+        <br>
+        If javascript doesn't try to work, you may throw any of the eggs. It doesn't have to fucking matter, 
+        so quit crying about hacking the broken toilets, and get PHD in having the best WPM ever. Your eternity 
+        is to destined be the fuck user. WE WILL NOT BE SMELLING YOUR SHIT!
+    </p>
+    <br>
+    <hr>d
+    <h2>FuckWORLD Chat!</h2>
+    <h6 style="margin-top:-20px;">By using this, you agree you're 18 years old.</h6>
+    <p class="paragraph_box">
+        Text Theme only, no BonziWORLD style chatting. Only instant messenger with CSS fridge display and animated slugs.
+        No having command yet, use green buttons "upload image" and "upload video" for /image and /video each.
+        /name and /avatar is soon. /admin is hidden for only best users on whole planet.
+        <br>
+        <br>
+        Chat all you want in this specialized black cube of text here, for communication and more. 
+        There has long archive of messages and past trails left to since remarks as well for all your speak 
+        that you owned in the past. Launched in September 6, 2024. This is chat eating the emojis, image, and talk like telephones 
+        only, but have are not toleration of your mother's New Era fuck bash. These witches have been replenished the community
+        guideline strike bullshit by IUS manager account (alluded from David Shitdevil Egan) with electrical
+        pope hammer for TextWORLD Special Condolence.
+    </p>
+    <div class="fuckworld_chat" id="fw_chat">
+        <button class="button_select" id="hide_fw">Hide FuckWORLD Chat</button>
+        <div class="overlay" style="position:absolute;" id="overlay_cont">
+            <div style="display:flex;flex-direction: row;">
+                <img src="/img/logo.png" width="120" height="120">
+                <h1 class="logo">Chat Login</h1>
+            </div>
+            Version 1.2.2
+            <hr>
+            <div style="display:flex;flex-direction:column;">
+                <input placeholder="enter username" id="username">
+                <input placeholder="Room ID (optional)" id="roomid">
+            </div>
+            <hr>
+            <p>Select an avatar:</p>
+            <div style="display:flex;flex-direction:row;">
+                <button class="av_option" onclick="pfp('/img/avatar/guest.png');"><img width="60" height="60" id="pfp_onute" src="/img/avatar/guest.png"></button>
+                <button class="av_option"onclick="pfp('/img/avatar/onute2.png');"><img width="60" height="60" id="pfp_ius" src="/img/avatar/onute2.png"></button>
+                <button class="av_option"onclick="pfp('/img/avatar/onute3.png');"><img width="60" height="60" id="pfp_jabba" src="/img/avatar/onute3.png"></button>
+            </div>
+            <div style="display:flex;flex-direction: row;">
+                    <p>or if you want, use Custom avatar URL </p>
+                    <input type="text" id="av" placeholder="pass custom avatar link..">
+                    <button class="button_select" onclick="pfp(document.getElementById('av').value);">Submit Avatar</button>
+            </div>
+            <hr>
+            <button class="button_select" id="login_submit">Login</button>
+        </div>
+        <div class="chat_cont" id="chat_cont" style="position:absolute;">
+            Loading...
+           <br>
+        
+        </div>
+        
+        <script>
+        function addemoji(emjj){
+          document.getElementById("msg_val").value+=':emoji_' + emjj + ':';
+        }
+            </script>
+        <hr>
+        <p id="useramt" style="margin-top:470px;">Users online: 3</p>
+        <div class="msg_bar" id="msg_bar">
+            <div class="send" id="send_msg"></div>
+            <input type="text" id="msg_val" placeholder="enter speak here">
+
+            <div style="display:flex;flex-direction: column;">
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('smile')"><img width="20" height="20" src="/img/emoji/emoji_smile.png"></button>
+                <button class="grid_option" onclick="addemoji('angry')"><img width="20" height="20" src="/img/emoji/emoji_angry.png"></button>
+                <button class="grid_option"onclick="addemoji('sunglasses')"><img width="20" height="20" src="/img/emoji/emoji_sunglasses.png"></button>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('smug')"><img width="20" height="20" src="/img/emoji/emoji_smug.png"></button>
+                <button class="grid_option" onclick="addemoji('friends')"><img width="20" height="20" src="/img/emoji/emoji_friends.png"></button>
+                <button class="grid_option"onclick="addemoji('cry')"><img width="20" height="20" src="/img/emoji/emoji_cry.png"></button>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('innocent')"><img width="20" height="20" src="/img/emoji/emoji_innocent.png"></button>
+                <button class="grid_option" onclick="addemoji('grin')"><img width="20" height="20" src="/img/emoji/emoji_grin.png"></button>
+                <button class="grid_option" onclick="addemoji('mouthzipped')"><img width="20" height="20" src="/img/emoji/emoji_mouthzipped.png"></button>
+            </div>
+            
+            </div>
+
+            <div class="upload_option">
+                <button class="button_select" id="img">Upload Image</button>
+                <button class="button_select" id="vid">Upload Video</button>
+            </div>
+            <button class="button_select" id="voice" style="width:80px">Turn On Voice 🔊</button>
+
+            <div style="display:flex;flex-direction: column;">
+                Page Effects:
+                <div style="display:flex;flex-direction:row;">
+                    <button class="grid_option" id="effect_rainb">R</button>
+                    <button class="grid_option" id="effect_off">Off</button>
+                </div>
+                
+                </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div style="display:flex;flex-direction: column;padding:20px;font-size:14px;width:100%;height:auto;justify-content: center;">
+        <div>Copyright FuckWORLD Chat And Server - 2024</div>
+        <div>Copyright PMDM and HyperWORLD 2019 - 2024</div>
+        <div>FuckWORLD Chat sounds (belonging to Samsung), and BonziWORLD Wiki are property of their respective owners.</div>
+    </div>
+    <div class="menu_right">
+        <div class="menu_right_tabs">
+            
+        </div>
+    </div>
+    <div id="audio"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Aerochat</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+  </script>
+</head>
+
+<body>
+  <div id="menu">
+      <div id="the" style="display: flex;">
+        <p id="user_label" style="color: black;">Current user:</p>
+        <div id="avatar" class="myUser">
+          <img id="pfp" class="myPfp" src="src/dog1.png"></img>
+        </div>
+      </div>
+    <br>
+    <br>
+      <button class="button" onclick='$("#myUser").show();' style="position: absolute; left: 91%; ">My User</button><br>
+  </div>
+  <div id="chat">
+     
+    
+  </div>
+
+  <div id="myUser">
+    Set username
+    <div style="display:flex;">
+      
+        <input type="text" id="username" placeholder="Username"></input>
+        <button onclick='setUser($("#username").val())'>Set</button>
+      </div>
+    <hr>
+    Set avatar:
+    <div style="display:flex;">
+        <select id="avatarLi">
+          <option value="/src/dog1.png">Happy Dog</option>
+          <option value="/src/fish.jpg">Goldfish 1</option>
+          <option value="/src/fish1.png">Goldfish 2</option>
+          <option value="/src/flower1.png">Sunflower</option>
+          <option value="/src/flower2.png">Vibrant Flower</option>
+          <option value="/src/msndude.jpg">MSN</option>
+          <option value="/src/smile1.png">Smilin' Pals</option>
+        </select>
+        <button onclick='setAvatar($("#avatarLi").val())'>Set avatar</button>
+      </div>
+    <br>
+    <br>
+    <div id="avatar">
+      <img id="pfp" class="myPfp" src="/src/dog1.png">
+    </div>
+    <hr>
+    <button onclick='$("#myUser").hide();'>Close Window</button>
+  </div>
+  
+  <div id="msgSend">
+    <div id="send" onclick='sendMsg($("#clientmsg").val())'></div><input type="text" id="clientmsg" placeholder="Enter A Message...">
+  </div>
+  <p id="usersOnline" style="color: black;">Users online: 0</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"></script>
+  <script defer src="anim.js"></script>
+  <script defer src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GoAnimate Grounded Maker</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="black">
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css"> 
+	<script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sizzle/2.3.5/sizzle.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sizzle/2.3.5/sizzle.min.js"></script> 
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="http://benahm.github.io/jquery.throwable/javascripts/libs/jquery-1.9.0/jquery.min.js" type="text/javascript"></script> 
+    <script src="http://benahm.github.io/jquery.throwable/javascripts/jquery.throwable.js" type="text/javascript"></script>
+	<script src="filesaver.js"></script>
+	<meta data-react-helmet="true" charset="utf-8">
+	<meta data-react-helmet="true" property="og:title" content="GoAnimate Grounded Maker">
+	<meta data-react-helmet="true" property="og:description" content="GoAnimate Grounded Maker allows to make a message for a user who did something wrong.">
+	<meta data-react-helmet="true" name="description" content="GoAnimate Grounded Maker allows to make a message for a user who did something wrong.">
+</head>
+<style>
+
+body { background: silver; font-family: Tahoma, Helvetica, Roboto, sans-serif; text-align: center; }
+
+textarea { font-family: Tahoma, Helvetica, Roboto, sans-serif; background: white; outline: none; resize: none; color: black; box-shadow: 2px 2px 15px red, -2px 2px 15px lime, 2px -2px 15px yellow, -2px -2px 15px cyan;}
+textarea:hover { background: white; outline: none; resize: none; color: blue; }
+textarea:active { background: white; outline: none; resize: none; color: blue; }
+
+button { font-family: Tahoma, Helvetica, Roboto, sans-serif; padding: 10px 10px; border: 1px inset green; background: yellowgreen; color: white; box-shadow: 0px 2px 4px turquoise, 0px 4px 4px blue; outline: none;}
+button:active { padding: 10px 10px; border: 1px inset red; background: orangered; color: beige; box-shadow: 0px 2px 4px firebrick; outline: none;}
+button:hover { padding: 10px 10px; border: 1px inset beige; background: yellow; color: black; box-shadow: 0px 2px 4px greenyellow; outline: none;}
+</style>
+<body>
+<datalist id="howdareyou">
+<option value="go to chuck-e-cheeses">
+<option value="see porn on illegal website">
+<option value="eat Rosie">
+<option value="burn my house">
+<option value="kill Doris">
+<option value="banish Arthur">
+<option value="cheat on Classic Caillou">
+<option value="spam on Minecraft's Discord">
+<option value="terminate VittorioTheVyonder2003">
+<option value="report Joseph's videos">
+<option value="vandalize my wiki page">
+<option value="block me on YouTube">
+<option value="block me on Discord for no reason">
+<option value="get expelled on school">
+<option value="ground Lily for stupid reason">
+<option value="delete System32 in your school's computer">
+<option value="punch Principal's face">
+<option value="kick Daisy and hurt Daisy from downstairs">
+<option value="let Sapphire go to his room">
+<option value="DDoS me">
+<option value="poop me">
+<option value="pee on my computer">
+<option value="drive Caillou with your car">
+<option value="make a magic for Mario to jump out of TV and make him to drink the milk on refrigerator">
+<option value="drink your soda">
+<option value="drink your son's blood">
+<option value="do a MEMZ">
+<option value="prank your teacher">
+<option value="smash your computer with a rock">
+<option value="smash my car window with a rock">
+<option value="repair my abandoned house">
+<option value="call the police on me">
+<option value="arrest me">
+<option value="BonziWORLD">
+<option value="make hatebase out of me">
+<option value="make fanbase out of me">
+<option value="destroy our this restaurant">
+<option value="eat cold sandwich">
+<option value="steal Nintendo Switch from GameStop">
+<option value="buy Game Boy Color while you're still grounded">
+<option value="take Rosie's Game Boy Advance SP onto GameStop">
+<option value="sell Sapphire's Super Mario Land 2 Game Boy Cartridge">
+<option value="come back while you're still ground">
+<option value="unground Caillou">
+<option value="ground everyone for no further reason">
+<option value="test your megaphones">
+<option value="go to school">
+<option value="make my phone explode">
+<option value="buy the Samsung Note 7">
+<option value="buy Lily's computer">
+<option value="buy Cody's laptop">
+<option value="let Cody to punish his mother">
+<option value="make your dad sick">
+<option value="make your husband very upset">
+<option value="make yourself">
+<option value="ashame on me">
+<option value="talk back to me">
+<option value="get me into detention">
+<option value="say go to detention">
+<option value="expel me">
+<option value="suspend me">
+<option value="report me">
+<option value="remove me">
+<option value="get his Miss Martin's IP address">
+<option value="use stressthem.to">
+<option value="make a rant out of CyansWorldCartoon">
+<option value="make a hateful message out of HanifimranAnimator">
+<option value="stand on microphone and get rich">
+<option value="get fired">
+<option value="fire me">
+<option value="assign me">
+<option value="install BonziBUDDY">
+<option value="uninstall Windows">
+<option value="destroy my computer">
+<option value="break my BIOS">
+<option value="power off while I am working">
+<option value="say um">
+<option value="yell out of the words I am boris the teeth guy face my teeth face it face it waaaaaaaa">
+<option value="eat lemon and die">
+<option value="die">
+<option value="eat the tree">
+<option value="poop on the sun">
+<option value="remove the moon">
+<option value="say Neither do I have an antivirus">
+<option value="put your kids on nether portal">
+<option value="kill Ender Dragon">
+<option value="kill Enderman while he's talking">
+<option value="kill Steve in that Minecraft world">
+<option value="blow up my house within TNT">
+<option value="do nothing">
+<option value="do everything">
+<option value="exist">
+<option value="play FNF">
+<option value="get blue balls on that video game">
+<option value="play BND of Doom logo with your sister Rosie and you made him to cry">
+<option value="tell my parents">
+<option value="deserve trying to be honest">
+<option value="face me the serious consequences">
+<option value="consequently post Vyond Team to patch this site">
+<option value="patch my site">
+<option value="expose my IP address">
+<option value="hack me">
+<option value="hack my computer and run WannaCry ransomware">
+<option value="drive it in the police station and made me the crash because of you">
+<option value="express in jail yourself">
+<option value="get F's in your assignments">
+<option value="get D minus in your test">
+<option value="crash the video from Discord">
+<option value="insult my girlfriend Rosie on Discord">
+<option value="insult my boyfriend">
+<option value="break Whitty's feelings">
+<option value="slice Daddy Dearest's head with the katana">
+<option value="eat all food on fridge">
+<option value="play Sega Genesis and get anti-piracy and go to jail">
+<option value="destroy Nintendo GameCube console">
+<option value="do this">
+<option value="change your voice to Daniel">
+<option value="change your T-shirt to star shirt">
+<option value="disallow Rosie">
+<option value="kidnap Classic Caillou">
+</datalist>
+<datalist id="largenumclub">
+<option value="hundred">
+<option value="thousand">
+<option value="million">
+<option value="billion">
+<option value="trillion">
+<option value="quadrillion">
+<option value="quintillion">
+<option value="sextillion">
+<option value="septillion">
+<option value="octillion">
+<option value="nonillion">
+<option value="decillion">
+<option value="undecillion">
+<option value="duodecillion">
+<option value="tredecillion">
+<option value="quattuordecillion">
+<option value="quindecillion">
+<option value="sexdecillion">
+<option value="septendecillion">
+<option value="octodecillion">
+<option value="novemdecillion">
+<option value="vigintillion">
+<option value="centillion">
+<option value="googol">
+<option value="googolplex">
+<option value="ultraplex">
+<option value="megaplex">
+<option value="omegaplex">
+<option value="superplex">
+<option value="infinityplex">
+<option value="infinity">
+<option value="duoinfinity">
+<option value="treinfinity">
+<option value="worst">
+<option value="bazillion">
+<option value="jillion">
+<option value="unvigintillion">
+<option value="duovigintillion">
+<option value="yillion">
+<option value="zillion">
+<option value="pillion">
+<option value="tresvigintillion">
+<option value="quattuorvigintillion">
+<option value="quinvigintillion">
+<option value="sesvigintillion">
+<option value="septemvigintillion">
+<option value="octovigintillion">
+<option value="novemvigintillion">
+<option value="trigintillion">
+<option value="untrigintillion">
+<option value="duotrigintillion">
+<option value="trestrigintillion">
+<option value="quattuortrigintillion">
+<option value="quintrigintillion">
+<option value="sestrigintillion">
+<option value="septentrigintillion">
+<option value="octotrigintillion">
+<option value="noventrigintillion">
+<option value="quadragintillion">
+<option value="quinquagintillion">
+<option value="sexagintillion">
+<option value="septuagintillion">
+<option value="octogintillion">
+<option value="nonagintillion">
+<option value="uncentillion">
+<option value="decicentillion">
+<option value="undecicentillion">
+<option value="viginticentillion">
+<option value="unviginticentillion">
+<option value="trigintacentillion">
+<option value="quadragintacentillion">
+<option value="quinquagintacentillion">
+<option value="sexagintacentillion">
+<option value="septuagintacentillion">
+<option value="octogintacentillion">
+<option value="nonagintacentillion">
+<option value="ducentillion">
+<option value="trecentillion">
+<option value="quadringentillion">
+<option value="quingentillion">
+<option value="sescentillion">
+<option value="septingentillion">
+<option value="octingentillion">
+<option value="nongentillion">
+<option value="millinillion">
+<option value="NaN">
+<option value="null">
+<option value="hyperplex">
+<option value="duperplex">
+<option value="alphaplex">
+<option value="kiloplex">
+<option value="gigaplex">
+<option value="zettaplex">
+<option value="geopplex">
+<option value="brontoplex">
+<option value="turboplex">
+<option value="roentplex">
+<option value="remixplex">
+<option value="crazyplex">
+</datalist>
+<datalist id="baduser">
+<option value="Dallas">
+<option value="Vixen">
+<option value="Alexander">
+<option value="Daniel">
+<option value="Nathan">
+<option value="Caillou">
+<option value="Rosie">
+<option value="Boris">
+<option value="Coris">
+<option value="Roris">
+<option value="Doris">
+<option value="Goris">
+<option value="Toris">
+<option value="Classic Caillou">
+<option value="Daisy">
+<option value="Haneeth">
+<option value="Sapphire">
+<option value="Lily">
+<option value="Clyde">
+<option value="Tom">
+<option value="Joe Biden">
+<option value="Joey">
+<option value="Eric">
+<option value="Dave">
+<option value="Macusoper">
+<option value="Diesel">
+<option value="Donald Trump">
+<option value="Zombie and Squid">
+</datalist>
+<datalist id="whichdateground">
+<option value="picoseconds">
+<option value="microseconds">
+<option value="milliseconds">
+<option value="seconds">
+<option value="hours">
+<option value="minutes">
+<option value="days">
+<option value="weeks">
+<option value="months">
+<option value="years">
+<option value="decades">
+<option value="centuries">
+<option value="millenniums">
+<option value="examinations">
+<option value="generations">
+<option value="forevers">
+<option value="nanoseconds">
+<option value="eras">
+<option value="ages">
+<option value="femtoseconds">
+<option value="plancks">
+<option value="attoseconds">
+<option value="zeptoseconds">
+<option value="yoctoseconds">
+<option value="momentums">
+<option value="semesters">
+<option value="lustrums">
+<option value="indictions">
+<option value="jubilees">
+<option value="aeons">
+<option value="galatics">
+<option value="exaseconds">
+<option value="zettaseconds">
+<option value="yottaseconds">
+<option value="brontoseconds">
+<option value="geopseconds">
+<option value="saganseconds">
+<option value="alphaseconds">
+<option value="kryatseconds">
+<option value="amosseconds">
+<option value="pectrolseconds">
+<option value="bolgerseconds">
+<option value="samboseconds">
+<option value="quesaseconds">
+<option value="kinsaseconds">
+<option value="rutherseconds">
+<option value="dubniseconds">
+<option value="seaborgseconds">
+<option value="bohrseconds">
+<option value="hassiuseconds">
+<option value="meitnerseconds">
+<option value="darmstadseconds">
+<option value="roentseconds">
+<option value="coperseconds">
+<option value="sigmas">
+<option value="bans">
+<option value="deletions">
+<option value="vandalizations">
+<option value="dyings">
+<option value="doings">
+<option value="punishments">
+<option value="executions">
+<option value="arrests">
+<option value="schools">
+</datalist>
+<h1 style="text-shadow: 4px 4px 2px grey;">GoAnimate Grounded Maker</h1>
+<img src="template_grey.png" width="200" height="100">
+<br>
+<br>
+<button onclick="document.getElementById('goanimateInputOhOh').checked = true;document.getElementById('goanimateInputBadPerson').value = '';document.getElementById('goanimateInputBadReason').value = '';document.getElementById('goanimateInputGroundDate').value = '';document.getElementById('goanimateInputGroundLarNm').value = '';document.getElementById('goanimateInputGroundNum').value = '';">Clear all</button>
+<br><br>
+<span onclick="document.getElementById('goanimateInputOhOh').click()" style="cursor: pointer;"><input type="checkbox" id="goanimateInputOhOh" checked>Start Oh Oh Oh?</span>
+<p>Enter the bad user.</p>
+<input list="baduser" type="text" id="goanimateInputBadPerson" placeholder="Enter a bad user">
+<p>Enter the person's bad reason.</p>
+<input list="howdareyou" type="text" id="goanimateInputBadReason" placeholder="Enter a bad thing reason">
+<p>Enter the number which it will be stayed.</p>
+<input type="text" id="goanimateInputGroundNum" placeholder="Enter a number"><button onclick="document.getElementById('goanimateInputGroundNum').value = Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999) + '' + Math.floor(Math.random()*9999999999)">Randomize</button>
+<p>Enter the large number which it will be last for.</p>
+<input list="largenumclub" type="text" id="goanimateInputGroundLarNm" placeholder="Enter a large number name (leave for other name reason)">
+<p>Enter the time which it will be ungrounded.</p>
+<input list="whichdateground" type="text" id="goanimateInputGroundDate" placeholder="Enter a time">
+<br><br>
+<button onclick="generate()">Generate</button>
+<br><br><br>
+	<textarea id="g" rows="20" cols="100" placeholder="This is will appear right here." spellcheck="false"></textarea>
+	<br><br><br>
+	<button onclick="downloadhex()">Download .txt</button>
+	<p>GoAnimate Grounded Maker allows to make a message for a user who did something wrong. This is classic edition for making grounded videos out of users.</p>
+<script>
+function generate(){if(document.getElementById('goanimateInputOhOh').checked === true){document.getElementById('g').value = "Oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh! " + document.getElementById('goanimateInputBadPerson').value + "! How dare you " + document.getElementById('goanimateInputBadReason').value + "! That's it! You are grounded grounded grounded grounded grounded grounded grounded for " + document.getElementById('goanimateInputGroundNum').value + " " + document.getElementById('goanimateInputGroundLarNm').value + " " + document.getElementById('goanimateInputGroundDate').value + "! Go to your room right now! You stupid " + document.getElementById('goanimateInputBadPerson').value + "kiko bitch" + document.getElementById('goanimateInputBadPerson').value + "igger!"}
+	else
+	{document.getElementById('g').value = document.getElementById('goanimateInputBadPerson').value + "! How dare you " + document.getElementById('goanimateInputBadReason').value + "! That's it! You are grounded grounded grounded grounded grounded grounded grounded for " + document.getElementById('goanimateInputGroundNum').value + " " + document.getElementById('goanimateInputGroundLarNm').value + " " + document.getElementById('goanimateInputGroundDate').value + "! Go to your room right now! You stupid " + document.getElementById('goanimateInputBadPerson').value + "kiko bitche" + document.getElementById('goanimateInputBadPerson').value + "igger!"}}
+
+
+	function downloadhex(){saveTextAs(document.getElementById('g').value, "Grounded_" + document.getElementById('goanimateInputBadPerson').value + ".txt")}
+	setInterval(function(){document.title="GoAnimate Grounded Maker"}, 1);
+</script>
+</body>
+</html>
