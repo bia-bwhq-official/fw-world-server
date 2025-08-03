@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "crypto": "^1.0.1",
-    "socket.io": "^7.0.6",
+    "socket.io": "^2.0.6",
     "express": "^2.0.0"
   }
 }
