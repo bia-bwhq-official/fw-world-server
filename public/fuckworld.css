@@ -96,7 +96,6 @@ background: linear-gradient(0deg, rgba(150,201,245,1) 0%, rgba(167,185,198,1) 14
         }
 
         .msg {
-            display:flex;
             color:black;
             width:90%;
             min-height:100px;
