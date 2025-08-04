@@ -155,7 +155,7 @@ socket.on("talk",(data) => {
     newmsg.id = localId;
     document.getElementById("chat_cont").appendChild(newmsg);
     newmsg.style.animation = "fadein 2s ease 1"
-    newmsg.innerHTML+='<div class="avatar_cont"><img src="'+data.avatar+'" width="80" height="80" style="border-radius:8px;"></div><p style="margin-left:20px;"><span style="font-size:20px;">' + data.name + '<span style="color:white;">(' + data.status + ')</span> said:</span><br><span style="font-size:15px;color:gray;">Today at '+getCurrentTime()+'</span><br><hr><br>'+data.msg+'</p>';
+    newmsg.innerHTML+='<div class="avatar_cont"><img src="'+data.avatar+'" width="80" height="80" style="border-radius:8px;"></div><p style="margin-left: 100px;margin-top: -60px;"><span style="font-size:20px;">' + data.name + '<span style="color:white;">(' + data.status + ')</span> said:</span><br><span style="font-size:15px;color:gray;">Today at '+getCurrentTime()+'</span><br><hr><br>'+data.msg+'</p>';
     document.getElementById("chat_cont").appendChild(document.createElement("br"));
     document.getElementById("chat_cont").scrollTop = document.getElementById("chat_cont").scrollHeight;
     if(isSpeak == true) {let bla = speak; bla(data.rawmsg, { pitch: 100 });}
